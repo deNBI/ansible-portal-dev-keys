@@ -1,0 +1,22 @@
+---
+- name: Copy set_portal_dev_team_keys.py script to target
+  copy:
+    src: set_portal_dev_team_keys.py
+    dest: /tmp/set_portal_dev_team_keys.py
+    mode: '0755'
+
+- name: Copy team_members.txt file to target
+  copy:
+    src: team_members.txt
+    dest: /tmp/team_members.txt
+    mode: '0644'
+
+- name: Run the set_portal_dev_team_keys.py script without replace
+  command: python3 /tmp/set_portal_dev_team_keys.py
+  when: not replace
+  tags: no_replace
+
+- name: Run the set_portal_dev_team_keys.py script with replace
+  command: python3 /tmp/set_portal_dev_team_keys.py -replace
+  when: replace
+  tags: replace
