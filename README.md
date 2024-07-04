@@ -9,6 +9,7 @@ roles:
   - name: set_portal_dev_team_keys
     src: https://github.com/deNBI/ansible-portal-dev-keys.git
     scm: git
+    version: 1.0.0
 ```
 
 ~~~bash
