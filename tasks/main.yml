@@ -1,22 +1,27 @@
----
 - name: Copy set_portal_dev_team_keys.py script to target
   copy:
     src: set_portal_dev_team_keys.py
     dest: /tmp/set_portal_dev_team_keys.py
     mode: '0755'
+    owner: "{{ user | default('ubuntu') }}"  # Set the owner to the 'user' parameter with default value 'ubuntu'
 
 - name: Copy team_members.txt file to target
   copy:
     src: team_members.txt
     dest: /tmp/team_members.txt
     mode: '0644'
+    owner: "{{ user | default('ubuntu') }}"  # Set the owner to the 'user' parameter with default value 'ubuntu'
 
 - name: Run the set_portal_dev_team_keys.py script without replace
   command: python3 /tmp/set_portal_dev_team_keys.py
   when: not replace
   tags: no_replace
+  become: yes
+  become_user: "{{ user | default('ubuntu') }}"  # Run as the 'user' parameter with default value 'ubuntu'
 
 - name: Run the set_portal_dev_team_keys.py script with replace
   command: python3 /tmp/set_portal_dev_team_keys.py -replace
   when: replace
   tags: replace
+  become: yes
+  become_user: "{{ user | default('ubuntu') }}"  # Run as the 'user' parameter with default value 'ubuntu'
