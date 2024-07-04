@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: deNBI
+  description: This roles sets the github public keys from the user in the "team_members" file
+  license: license (e.g., MIT)
+  min_ansible_version: 2.x
+  platforms:
+    - name: CentOS
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - system
+  dependencies: []
