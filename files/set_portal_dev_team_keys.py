@@ -8,13 +8,12 @@ import requests
 home = str(Path.home())
 AUTHORIZED_KEYS = f"{home}/.ssh/authorized_keys"
 OLD_AUTHORIZED_KEYS = f"{home}/.ssh/old.authorized_keys"
-MEMBER_LIST_URL = "/tmp/team_members.txt"
-
+TEAM_MEMBERS_FILE = "/tmp/team_members.txt"
 
 def get_team_members():
     print("Getting Team Members")
-    r = requests.get(url=MEMBER_LIST_URL)
-    team_members = r.text.splitlines()
+    with open(TEAM_MEMBERS_FILE, 'r') as file:
+        team_members = file.read().splitlines()
     print(f"Found Team Members: {team_members}")
     return team_members
 
