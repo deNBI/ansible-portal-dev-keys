@@ -7,7 +7,7 @@ This Ansible role automates the setup of SSH keys for team members on a target m
 
 roles:
   - name: set_portal_dev_team_keys
-    src: https://github.com/your-username/set_portal_dev_team_keys.git
+    src: https://github.com/deNBI/ansible-portal-dev-keys.git
     scm: git
 ```
 
